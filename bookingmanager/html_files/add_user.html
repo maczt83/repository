@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Add user</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+</head>
+<body>
+
+    <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+    <div class="wrapper">
+        <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+        <div class="main-panel" >
+            <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+            <!--Begin Content-->
+
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pvr-wrapper">
+                            <div class="pvr-box">
+                                <h5 class="pvr-header">
+                                    Add new user
+                                    <div class="pvr-box-controls">
+                                        <i class="material-icons" data-box="refresh" data-effect="win8_linear">refresh</i>
+                                        <i class="material-icons" data-box="fullscreen">fullscreen</i>
+                                    </div>
+                                </h5>
+
+
+                                <form class="container" method="POST" data-th-action="@{/users/add}"  data-th-object="${newUser}">
+                                    <div class="form-row">
+                                        <div class="col-md-5">
+                                            <label for="username">Username:</label>
+                                            <input id="username" class="form-control" name="username" placeholder="Username" data-th-field="*{username}" required="required"  data-th-errorclass="is-invalid" type="text" />
+                                            <p class="invalid-feedback" data-th-if="${#fields.hasErrors('username')}" data-th-errors="*{username}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-5">
+                                            <label for="password">Password:</label>
+                                            <input id="inputPassword" class="form-control" name="password"  placeholder="Password" data-th-field="*{password}"  required="required" data-th-errorclass="is-invalid" type="password" />
+                                            <p class="invalid-feedback" data-th-if="${#fields.hasErrors('password')}" data-th-errors="*{password}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-5">
+                                            <label for="password">Password again:</label>
+                                            <input id="inputPasswordAgain" name="inputPasswordAgain" type="password" class="form-control" placeholder="Password again" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-5">
+                                            <label for="email">E-mail</label>
+                                            <input class="form-control" placeholder="E-mail" required="required" id="email" name="email" data-th-field="*{email}" data-th-errorclass="is-invalid"/>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid email address.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-5">
+                                            <label for="firstname">First Name:</label>
+                                            <input class="form-control" placeholder="First Name" required="required" id="firstName" name="firstName" data-th-field="*{firstName}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-5">
+                                            <label for="lastname">Last Name:</label>
+                                            <input class="form-control" placeholder="Last Name" required="required" id="lastName" name="lastName" data-th-field="*{lastName}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <label for="role">Role:</label>
+                                            <select class="form-control" data-th-field="*{role}">
+                                                <option data-th-each="role : ${roleList}" 
+                                                        data-th-value="${role.id}" 
+                                                        data-th-text="${role.roleName}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button class ="btn btn-purple" type="submit">submit</button>
+                                    <a href="/users" class="btn btn-purple float-right">Go back</a>
+									
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!--End Content-->
+            <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+        </div>
+    </div>
+    <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+
+</body>
+</html>

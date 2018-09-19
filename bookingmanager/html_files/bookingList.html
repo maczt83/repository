@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Booking List</title>
+  <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+  <link rel="stylesheet" type="text/css" href= "/css/bookingList.css" />
+</head>
+<body>
+
+  <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+  <div class="wrapper">
+    <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+    <div class="main-panel" >
+      <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+      <!--Begin Content-->
+
+      <div class="content">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="pvr-wrapper">
+              <div class="pvr-box">
+                <h5 class="pvr-header">
+                  List of bookings
+                  <div class="pvr-box-controls">
+                    <i class="material-icons" data-box="refresh" data-effect="win8_linear">refresh</i>
+                    <i class="material-icons" data-box="fullscreen">fullscreen</i>
+                  </div>
+                </h5>
+                <div class="table-responsive">
+                  <table class="table table-separate table-extended">
+                    <thead>
+                      <tr>
+                        <th class="align-middle text-center">
+                          <a href="http://localhost:8080/bookingList?orderBy=name">Name</a>
+                        </th>
+                        <th class="align-middle text-center">
+                          <a href="http://localhost:8080/bookingList?orderBy=emailAddress">Email Address</a>
+                        </th>
+                        <th class="align-middle text-center">
+                          <a href="http://localhost:8080/bookingList?orderBy=country">Country</a>
+                        </th>
+                        <th class="align-middle text-center">
+                          <a href="http://localhost:8080/bookingList?orderBy=resNumber">Number of res.</a>
+                        </th>
+                        <th class="align-middle text-center"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr data-th-each="info: ${infoList}">
+                        <td class="align-middle text-center" data-th-text="${info.name}"></td>
+                        <td class="align-middle text-center" data-th-text="${info.emailAddress}"></td>
+                        <td class="align-middle text-center" data-th-text="${info.country}"></td>
+                        <td class="align-middle text-center" data-th-text="${info.numOfRes}"></td>
+                        <td class="text-center">
+                          <a class="btn btn-purple" data-th-href="@{'/booking/' + ${info.id}}">View</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End Content-->
+      <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+    </div>
+  </div>
+  <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+</body>
+</html>

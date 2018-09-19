@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Payment details</title>
+    <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+    <link rel="stylesheet" type="text/css" href= "/css/bootstrap.min.css" />
+    <script src="/js/payment.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+    <div class="wrapper">
+        <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+        <div class="main-panel" >
+            <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+            <!--Begin Content-->
+
+            <div class="content ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pvr-wrapper">
+                            <div class="pvr-box">
+                                <h5 class="pvr-header">
+                                    Payment
+                                    <div class="pvr-box-controls">
+                                        <i class="material-icons" data-box="refresh" data-effect="win8_linear">refresh</i>
+                                        <i class="material-icons" data-box="fullscreen">fullscreen</i>
+                                        <i class="material-icons" data-box="close">close</i>
+                                    </div>
+                                </h5>
+                               <form class="container" method="POST" data-th-action="@{/payment}" data-th-object="${paymentData}">
+                                   <div class="form-row"> 
+                                   <label>Provider</label>
+                                    <select class="custom-select" data-th-field="*{providerName}" data-th-errorclass="is-invalid" id="provider" required>
+                                        <option value="">Choose payment provider</option>
+                                        <option value="OTPSimple">OTP Simple</option>
+                                        <option value="KHB">K&H</option>
+                                        <option class="szepkartya" value="KHBSZEP">K&H Szépkártya</option>
+                                        <option class="szepkartya" value="OTPSZEP">OTP Szépkártya</option>
+                                        <option class="szepkartya" value="MKBSZEP">MKB Szépkártya</option>
+                                    </select>
+                                    <div class="invalid-feedback">Invalid field</div>
+                                </div>
+                                <div class="form-row">
+                                    <label>Amount</label>
+                                    <input type="text" class="form-control" data-th-field="*{amount}" data-th-errorclass="is-invalid" id="amount" placeholder="Amount" value="" required />
+                                    <div class="invalid-feedback">Use only digits</div>
+                                </div>
+                                <div class="form-row">
+                                    <label>Currency</label>
+                                    <select class="custom-select" data-th-field="*{currency}" data-th-errorclass="is-invalid" id="currency" required>
+                                        <option value="HUF">HUF</option>
+                                        <option value="EUR">EUR</option>
+                                        <option value="USD">USD</option>
+                                    </select>
+                                    <div class="invalid-feedback">Invalid field</div>
+                                </div>
+                                <div class="form-row">
+                                    <label>Language of the payment provider's page</label>
+                                    <select class="custom-select" data-th-field="*{language}" data-th-errorclass="is-invalid" id="language" required>
+                                        <option value="HU">HU</option>
+                                        <option value="EN">EN</option>
+                                        <option value="DE">DE</option>
+                                    </select>
+                                    <div class="invalid-feedback">Invalid field</div>
+                                </div>
+                                <div class="form-row szepkartyapocket">
+                                    <label>Szép Card pocket</label>
+                                    <select class="custom-select" data-th-field="*{extra}" id="pocket">
+                                        <option value="">Choose the pocket</option>
+                                        <option value="1">Accommodation</option>
+                                        <option value="2">Hospitality</option>
+                                        <option value="3">Leisure</option>
+                                    </select>
+                                    <div class="invalid-feedback">Invalid field</div>
+                                </div>
+                                <input data-th-field="*{bookingId}" class="d-none" data-th-id="bookingId" />
+                                <br>
+                                <button class="btn btn-primary" type="submit" id="submit">Send request</button>
+                               </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Content-->
+            <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+        </div>
+    </div>
+    <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+</html>

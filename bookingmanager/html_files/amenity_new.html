@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Amenity</title>
+        <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+    </head>
+    <body>
+    <!--MENU FRAGMENTS-->
+        <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+        <div class="wrapper">
+            <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+            <div class="main-panel" >
+                <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="pvr-wrapper">
+                                <div class="pvr-box">
+                                    <h5 class="pvr-header" data-th-text="${headingText}"></h5>
+                                    
+                                    <!-- AMENITY HOZZÁADÁSA -->
+									<form class="container" method="POST" data-th-action="@{${url}}" data-th-object="${amenityData}">
+										<div class="form-group">
+											<label for="amenity-add-name">Amenity name</label>
+											<input type="text"  class="form-control " id="amenity-add-name" data-th-field="*{name}" placeholder="Enter the name of the amenity" />
+											<label class="col-form-label" style="color: red" data-th-text="${errorMessageAmenityName}"></label>
+										</div>
+										<button class="btn btn-purple waves-effect" type="submit">Save the changes</button>
+										<a href="/amenity/search" class="btn btn-purple float-right">Go back</a>
+									</form>									
+                                </div>
+								
+                            </div>
+                        </div>
+					</div>
+                </div>
+                <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+            </div>
+          </div>
+        <a data-th-replace="fragments/fragmentsNew :: scroll"></a>											
+    </body>
+</html>

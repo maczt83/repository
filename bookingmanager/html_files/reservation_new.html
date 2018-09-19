@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+    <head>
+        <title>Create reservation</title>
+        <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+        <script src="/js/ReservationRoom.js"></script>
+    </head>
+    <body>
+         <!--MENU FRAGMENTS-->
+        <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+        <div class="wrapper">
+            <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+            <div class="main-panel" >
+                <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="pvr-wrapper">
+                                <div class="pvr-box">
+                                    <h5 class="pvr-header" data-th-text="${headingText}"></h5>
+                                    
+                                        <!-- RESERVATION LÉTREHOZÁSA -->
+                                    <div class="container mt-3">
+                                            <form class="container add-reservation" method="POST" data-th-action="@{${postLink}}" data-th-object="${reservationData}">
+
+
+                                               
+                                                <div class="form-group">
+                                                        <label for="reservation-add-startdate">Start Date</label>
+                                                        <div class="input-group date">
+                                                                <input type="text"  class="form-control date_picker" id="input-from-date" data-th-field="*{startDate}"  />
+                                                                <span class="input-group-addon date_picker">
+                                                                        <i class="material-icons">date_range</i>
+                                                                </span>
+                                                        </div>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="reservation-add-enddate">End Date</label>
+                                                        <div class="input-group date">
+                                                                <input type="text"  class="form-control date_picker" id="input-to-date" data-th-field="*{endDate}"  />
+                                                                <span class="input-group-addon date_picker">
+                                                                        <i class="material-icons">date_range</i>
+                                                                </span>
+                                                        </div>
+                                                </div>
+                                                  <div class="form-group">
+                                                        <label for="reservation-add-checkInTime">Check in time</label>
+                                                        <div class="input-group date">
+                                                                <input type="text"  class="form-control" id="reservation-add-time" data-th-field="*{checkInTime}"  />
+                                                                <span class="input-group-addon date_picker">
+                                                                        <i class="material-icons">query_builder</i>
+                                                                </span>
+                                                                <div data-th-if="${#fields.hasErrors('checkInTime')}" data-th-errors="*{checkInTime}"></div>
+                                                        </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                        <label class="col-sm-2 col-form-label" for="reservation-add-breakfast">Breakfast</label>
+                                                        <div class="col-sm-1" >
+                                                                <input type="radio" name="gender" value="1" id="breakfastYes" data-th-field="*{breakfast}" /> Yes      
+                                                        </div>
+                                                        <div class="col-sm-1" >
+                                                                <input type="radio" name="gender" value="0" id="breakfastNo" data-th-field="*{breakfast}" /> No
+                                                        </div>
+                                                </div>
+                                                <select class='form-control' id='select-room' name="roomId.id">
+                                                    <option class="default is-invalid" value='0'>- Select a room -</option>
+                     
+                                                    
+                                                </select>
+                                                <div class="form-group">
+                                                        <label for="reservation-add-note">Note</label>
+                                                        <textarea  class="form-control" id="reservation-add-note" rows="3" data-th-field="*{note}"></textarea>
+                                                </div>
+                                                <input type="hidden"  data-th-field="*{paid}"  />
+                                                
+                                                <button class="btn btn-purple waves-effect" type="submit">Add new </button>
+                                            </form>
+                                        </div>
+    </body>
+</html>

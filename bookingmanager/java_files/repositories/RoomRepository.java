@@ -1,0 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package progmatic.bookingmanager.repositories;
+
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import progmatic.bookingmanager.databaseEntity.Room;
+import progmatic.bookingmanager.databaseEntity.RoomType;
+
+/**
+ *
+ * @author Máté
+ */
+public interface RoomRepository extends JpaRepository<Room, Long>{
+
+    Room findById(long id);
+    List<Room> findByCapacityAndFloorAndBuildingAndRoomType (short capacity, short floor, short building, RoomType roomType);
+}

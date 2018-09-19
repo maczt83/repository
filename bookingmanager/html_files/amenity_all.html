@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Show All Amenity</title>
+		<object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+    </head>
+    <body>
+    <!--MENU FRAGMENTS-->
+        <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+        <div class="wrapper">
+            <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+            <div class="main-panel" >
+                <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="pvr-wrapper">
+                                <div class="pvr-box">
+                                    <h5 class="pvr-header" style="line-height: 40px"> List of amenities 
+										<a class="btn btn-purple waves-effect float-right" href="/amenity/create" role="button">Add new amenity</a>
+										<div class="clearfix"></div>
+									</h5>
+
+									<!-- AMENITY LISTÁJA -->
+									<div class="container">
+										<table class="table" >
+											<tr>
+												<th>Name</th>
+												<th>Modify</th>
+												<th>Delete</th>
+											</tr>
+											<tr data-th-each="amenity: ${amenityList}">
+												<td><p data-th-text="${amenity.name}"></p></td>
+												<td><a data-th-href="'/amenity/modify/' + ${amenity.id}" class="btn btn-purple waves-effect">Modify</a></td>
+												<td><a data-th-href="'/amenity/delete/' + ${amenity.id}" onclick="return confirm ('Are you sure you want to delete this amenity?');" class="btn btn-purple waves-effect">Delete</a></td>
+											</tr>
+										</table>
+									</div>
+									
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+            </div>
+        <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+									
+    </body>
+</html>

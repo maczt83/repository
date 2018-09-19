@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>User List</title>    
+    <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+    <script src="/js/users.js"></script>
+</head>
+<body>
+    <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+    <div class="wrapper">
+        <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+        <div class="main-panel" >
+            <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+            <!--Begin Content-->
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pvr-wrapper">
+                            <div class="pvr-box">
+                                <h5 class="pvr-header">
+                                    User list
+                                    <div class="pvr-box-controls">
+                                        <i class="material-icons" data-box="refresh" data-effect="win8_linear">refresh</i>
+                                        <i class="material-icons" data-box="fullscreen">fullscreen</i>
+                                    </div>
+                                </h5>
+                                <div class="table-responsive">
+                                    <table class="table table-separate table-extended">
+                                        <thead>
+                                            <tr>
+                                                <th>Username</th>
+                                                <th>Tags</th>
+                                                <th>First name </th>
+                                                <th>Last name </th>
+                                                <th class="text-center">Active/Inactive</th>
+                                                <th class="text-center">Modify</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr data-th-each="user: ${userList}">
+                                                <td class="">
+                                                    <div class="user_box">
+                                                        <div class="user-with-avatar">
+                                                            <img alt="" src="/assets/img/user-alt-128.png">
+                                                        </div>
+                                                        <div class="user_email">
+                                                            <span data-th-text="${user.username}">
+
+                                                            </span>
+                                                            <span class="f-s-11" data-th-text="${user.email}">
+
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge-danger badge" data-th-unless="${user.active}">inactive</span>
+                                                    <span class="badge-success badge" data-th-if="${user.active}">active</span>
+                                                    <span class="badge-info badge" data-th-text="${user.role.getRoleName()}">rolename</span>
+                                                </td>
+                                                <td data-th-text="${user.firstName}">
+                                                    firstname
+                                                </td>
+                                                <td data-th-text="${user.lastName}">
+                                                    lastname
+                                                </td>
+                                                <td class="text-center">									
+                                                    <button class="btn btn-danger btn-sm delete-user">Active/Inactive</button>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a data-th-href="'/users/modify/'+${user.id}">
+                                                        <button class="btn btn-sm btn-sm modify-user">Modify</button>
+                                                    </a>
+                                                </td>
+                                                <td id="userid" data-th-text="${user.id}" style="display:none"></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>			
+                    </div>
+                </div>
+            </div>
+            <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+        </div>
+    </div>
+    <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+</body>
+</html>

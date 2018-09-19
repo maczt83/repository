@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Reservation details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+</head>
+<body>
+
+  <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+  <div class="wrapper">
+    <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+    <div class="main-panel" >
+      <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+      <!--Begin Content-->
+
+      <div class="content">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="pvr-wrapper">
+              <div class="pvr-box">
+                <h5 class="pvr-header">
+                  Reservation details
+                  <div class="pvr-box-controls">
+                    <i class="material-icons" data-box="refresh" data-effect="win8_linear">refresh</i>
+                    <i class="material-icons" data-box="fullscreen">fullscreen</i>
+                    <i class="material-icons" data-box="close">close</i>
+                  </div>
+                </h5>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="card">
+                      <div class="card-body text-center">
+                        <h3>
+                          <a class="card-link">
+                            <span>Guest info</span>
+                          </a>
+                        </h3>
+                        <table class="table text-left" id="table">
+                          <tr>
+                            <td>Name</td>
+                            <td class="text-right" data-th-text="${resInfo.name}"></td>
+                          </tr>
+                          <tr>
+                            <td>Phone</td>
+                            <td class="text-right" data-th-text="${resInfo.phoneNumber}"></td>
+                          </tr>
+                          <tr>
+                            <td>E-mail</td>
+                            <td class="text-right" data-th-text="${resInfo.emailAddress}"></td>
+                          </tr>
+                          <tr>
+                            <td>Arrival</td>
+                            <td class="text-right" data-th-text="${resInfo.arrival}"></td>
+                          </tr>
+                          <tr>
+                            <td>Service</td>
+                            <td class="text-right" data-th-text="${resInfo.service}"></td>
+                          </tr>                                                      
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card">
+                      <div class="card-body text-center">
+                        <h3>
+                          <a class="card-link">
+                            <span>Room info</span>
+                          </a>
+                        </h3>
+                        <table class="table text-left" id="table">
+                          <tr>
+                            <td>FROM</td>
+                            <td class="text-right" data-th-text="${resInfo.startDate}"></td>
+                          </tr>
+                          <tr>
+                            <td>TO</td>
+                            <td class="text-right" data-th-text="${resInfo.endDate}"></td>
+                          </tr>
+                          <tr>
+                            <td>Room number</td>
+                            <td class="text-right" data-th-text="${resInfo.roomNumber}"></td>
+                          </tr>
+                          <tr>
+                            <td>Room type</td>
+                            <td class="text-right" data-th-text="${resInfo.roomTypeName}"></td>
+                          </tr>
+                          <tr>
+                            <td>Note</td>
+                            <td class="text-right" data-th-text="${resInfo.note}"></td>
+                          </tr>                                                      
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <!--
+                <div data-sec-authorize="hasRole('ROLE_MANAGER')">
+                  <div>
+                    <a onclick="return confirm ('Are you sure you want to delete this reservation?');" class="btn btn-wd btn-purple waves-effect_delete">Delete</a>
+                    <a class="text-center btn btn-wd btn-purple waves-effect">Modify</a>                            
+                  </div>
+                </div>
+                -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--End Content-->
+      <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+    </div>
+  </div>
+  <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+
+</body>
+</html>

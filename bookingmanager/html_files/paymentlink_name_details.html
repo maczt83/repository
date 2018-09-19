@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+</head>
+<body>
+    <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+    <div class="wrapper">
+        <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+        <div class="main-panel" >
+            <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+            <!--Begin Content-->
+
+            <div class="content ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pvr-wrapper">
+                            <div class="pvr-box">
+                                <h5 class="pvr-header">
+                                    Payment
+                                    <div class="pvr-box-controls">
+                                        <i class="material-icons" data-box="refresh" data-effect="win8_linear">refresh</i>
+                                        <i class="material-icons" data-box="fullscreen">fullscreen</i>
+                                        <i class="material-icons" data-box="close">close</i>
+                                    </div>
+                                </h5>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-mb-6">
+                                            <ul>
+                                                <li style="font-weight: bold" >
+                                                    Payment Link Name:
+                                                    <ul>
+                                                        <li style="font-weight: normal" data-th-text="${payment.paymentLinkName}"></li>
+                                                    </ul>
+                                                </li>
+                                                <li style="font-weight: bold">
+                                                    Payment Link :
+                                                    <ul>
+                                                        <li style="font-weight: normal" data-th-text="${payment.paymentLink}"></li>
+                                                    </ul>
+                                                </li>
+                                                <li style="font-weight: bold">
+                                                    Amount:
+                                                    <ul>
+                                                        <li style="font-weight: normal" data-th-text="${payment.amount}"></li>
+                                                    </ul>
+                                                </li>
+                                                
+                                                <li style="font-weight: bold">
+                                                    Currency:
+                                                    <ul>
+                                                        <li style="font-weight: normal" data-th-text="${payment.currency}"></li>
+                                                    </ul>
+                                                </li>
+                                                <li style="font-weight: bold">
+                                                    Payment Link Status:
+                                                    <ul>
+                                                        <li style="font-weight: normal" data-th-text="${payment.paymentLinkStatus}"></li>
+                                                    </ul>
+                                                </li>
+                                                <li style="font-weight: bold">
+                                                    Creation Date:
+                                                    <ul>
+                                                        <li style="font-weight: normal" data-th-text="${payment.creationDate}"></li>
+                                                    </ul>
+                                                </li>
+                                                <li style="font-weight: bold">
+                                                    LastUpdate :
+                                                    <ul>
+                                                        <li style="font-weight: normal" data-th-text="${payment.lastUpdate}"></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-mb-12">
+                                        <table class="table table-separate table-extended">
+                                            <thead>
+                                                <tr>
+                                                    <th>Provider Transaction Id </th>
+                                                    <th>Result Code</th>
+                                                    <th>Result Message</th>
+                                                    <th class="text-center">View Details</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr data-th-each="transaction: ${payment.paymentTransactionList}">
+
+
+                                                    <td data-th-text="${transaction.providerTransactionId}"> </td>
+                                                    <td data-th-text="${transaction.resultCode}"></td>
+                                                    <td data-th-text="${transaction.resultMessage}"> </td>
+                                                    <td class="text-center">
+                                                        <a data-th-href="'/paymentLink/'+ ${payment.paymentLinkName} +'/' + ${transaction.transactionId}">
+                                                            <button class="btn btn-sm btn-sm ">View Details</button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+        </div>
+    </div>
+    <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+</body>
+</html>

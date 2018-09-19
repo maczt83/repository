@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Show All Room</title>
+        <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+    </head>
+    <body>
+    <!--MENU FRAGMENTS-->
+        <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+        <div class="wrapper">
+            <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+            <div class="main-panel" >
+                <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="pvr-wrapper">
+                                <div class="pvr-box">
+                                    <h5 class="pvr-header"> List of rates </h5>
+									
+									<!-- ROOM RATE LISTA -->
+									<div class="row">
+										<div class="col-6 col-md-4" 
+											 style="margin-bottom: 20px; color: black"
+											 data-th-each="rates: ${roomRates}" >										 
+											<div class="table-responsive">
+												<table class="table">
+													<ul class="list-group list-group-flush">
+														<li class="list-group-item room-capacity"    data-th-text=" 'Start Date ' + ${rates.startDate} "></li>
+														<li class="list-group-item room-extraBed"    data-th-text=" 'End Date ' + ${rates.endDate}"></li>
+														<li class="list-group-item room-building"    data-th-text=" 'Rate: ' + ${rates.rate}"></li>
+													</ul>
+												</table>
+											</div>        
+										</div>
+									</div>
+									
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+        </div>
+        <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+    </body>
+</html>

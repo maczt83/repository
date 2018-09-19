@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+  <head>
+    <title>Room report</title>
+  <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+  <script src="../js/room-report.js" type="text/javascript"></script>
+  <link href="/css/purple_background.css" rel="stylesheet"/>
+  <style>
+    p{
+        margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+  <div class="wrapper">
+    <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+    <div class="main-panel" >
+      <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+
+      <div class="content">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="pvr-wrapper">
+              <div class="pvr-box">
+                <h5 class="pvr-header">
+                  Room report
+                  <div class="pvr-box-controls">
+                    <i class="material-icons" data-box="refresh" data-effect="win8_linear">refresh</i>
+                    <i class="material-icons" data-box="fullscreen">fullscreen</i>
+                  </div>
+                </h5>
+
+                <div class="content">
+                  <div class="container">
+
+                    <div class="row text-center mb-3">
+                      <div class="col-2">
+                        <p>Select Start Date</p>
+                      </div>
+                      <div class="col-3">
+                        <input class="form-control date_picker" id="input-from-date" type="text" />
+                        <p class="invisible" id="from-date-error"></p>
+                      </div>
+                      <div class="col-2">
+                        <p >Select End Date</p>
+                      </div>
+                      <div class="col-3">
+                        <input class="form-control date_picker" id="input-to-date" type="text" />
+                        <p class="invisible" id="to-date-error"></p>
+                      </div>
+                    </div>
+                    <table class="table mb-5" id="available-room-table">
+                      <thead class="thead-light">
+                        <tr>
+                          <th colspan="4" class="bg-secondary text-center text-white">AVAILABLE ROOMS</th>
+                        </tr>
+                      </thead>
+                      <thead>
+                      <th style="width:40%">RoomNumber</th>
+                      <th style="width:30%">RoomType</th>
+                      </thead>
+                      <tbody>
+
+                      </tbody>
+                    </table>
+
+                    <div data-sec-authorize="hasRole('ROLE_MANAGER')">
+                      <table class="table" id='reserved-room-table'>
+                        <thead class="thead-light">
+                          <tr>
+                            <th colspan="4" class="bg-secondary text-center text-white">RESERVED ROOMS</th>
+                          </tr>
+                        </thead>
+                        <thead>
+                        <th>RoomNumber</th>
+                        <th>RoomType</th>
+                        <th>StartDate</th>
+                        <th>EndDate</th>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+    </div>
+  </div>
+  <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+</body>
+</html>

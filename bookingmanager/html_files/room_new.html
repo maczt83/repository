@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Room</title>
+		<object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+		<script src="/js/room-new.js"></script>
+    </head>
+    <body>
+	
+    <!--MENU FRAGMENTS-->
+        <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+        <div class="wrapper">
+            <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+            <div class="main-panel" >
+                <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="pvr-wrapper">
+                                <div class="pvr-box">
+                                    <h5 class="pvr-header" data-th-text="${headingText}"></h5>
+                                    
+                                    <!-- SZOBA LÉTREHOZÁSA -->
+									<div class="container mt-3">
+										<form class="container add-room" method="POST" data-th-action="@{${url}}" data-th-object="${roomData}">
+
+											<!-- ROOM TYPE -->				
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label" for="room-add-roomtype">Room type</label>
+												<div class="col-sm-10">
+													<select class="custom-select" id="room-add-roomtype" data-th-field="*{roomType}"
+															data-th-classappend="${#fields.hasErrors('roomType')} ? is-invalid : ''" >
+														<option class="default is-invalid" value="0"> - Select roomtype - </option>
+														<option data-th-each="roomtype : ${roomtypes}"
+																data-th-value="${roomtype.id}"
+																data-th-text="${roomtype.name}"></option>
+													</select>
+													<div class="invalid-feedback">
+														Please choose a room type.
+													</div>
+												</div>
+											</div>
+
+											<!-- ROOM CAPACITY -->
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label" for="room-add-capacity">Capacity</label>
+												<div class="col-sm-10">
+													<input type="number"  class="form-control col-sm-1" id="room-add-capacity" data-th-field="*{capacity}" 
+														   data-th-classappend="${#fields.hasErrors('capacity')} ? is-invalid : ''"  />
+													<div class="invalid-feedback">
+														Please add the capacity.
+													</div>
+												</div>
+											</div>
+
+											<!-- ROOM BUILDING -->				
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label" for="room-add-building">Building</label>
+												<div class="col-sm-10">
+													<input type="number"  min="1" class="form-control col-sm-1" id="room-add-building" data-th-field="*{building}" 
+														   data-th-classappend="${#fields.hasErrors('building')} ? is-invalid : ''"  />
+													<div class="invalid-feedback">
+														Please add the building.
+													</div>
+												</div>
+											</div>
+
+											<!-- ROOM FLOOR -->
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label" for="room-add-floor">Floor</label>
+												<div class="col-sm-10">
+													<input type="number"  min="0" class="form-control col-sm-1" id="room-add-floor" data-th-field="*{floor}" 
+														   data-th-classappend="${#fields.hasErrors('floor')} ? is-invalid : ''" />
+													<div class="invalid-feedback">
+														Please add the floor.
+													</div>
+												</div>
+											</div>
+
+											<!-- ROOM NUMBER -->				
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label" for="room-add-roomnumber">Room number</label>
+												<div class="col-sm-10">
+													<input type="number"  min="1" class="form-control col-sm-1" id="room-add-roomnumber" data-th-field="*{roomNumber}" 
+														   data-th-classappend="${#fields.hasErrors('roomNumber')} ? is-invalid : ''"  />
+													<div class="invalid-feedback">
+														Please add the room number.
+													</div>
+												</div>
+											</div>
+
+											<!-- ROOM EXTRA BED -->				
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label">Extra bed</label>
+									            <div class="i_check_div col-sm-5">
+													<div class="skin skin-square_green skin-section" style="margin-left: 10px">
+														<ul class="row list-inline">
+															<li class="col-md-3">
+																<input type="radio" value="1" data-th-field="*{extraBed}"/>
+																<label>  Yes  </label>
+															</li>
+															<li>
+																<input type="radio" value="0" data-th-field="*{extraBed}"/>
+																<label>  No  </label>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+
+											<!-- ROOM AMENITY -->
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label">Amenities</label>
+									            <div class="i_check_div col-sm-5">
+													<div class="skin skin-square_green skin-section" style="margin-left: 10px">
+														<ul class="row list-inline">
+															<li class="col-md-3" data-th-each="amenity : ${amenities}">
+																<input type="checkbox" data-th-value="${amenity.id}" data-th-field="*{amenityList}"/>
+																<label for="square-checkbox-1" data-th-text="${amenity.name}" ></label>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											
+											<!-- BUTTON  -->
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label"></label>
+												<div class="col-sm-10">
+													<button class="btn btn-purple waves-effect" type="submit">Save the changes</button>
+													<a href="/room/search" class="btn btn-purple float-right">Go back</a>
+												</div>
+											</div>
+										</form>	
+									</div>
+									
+                                </div>
+                            </div>
+                        </div>
+					</div>
+                </div>
+                <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+            </div>
+          </div>
+        <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+	
+    </body>
+</html>

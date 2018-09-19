@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+</head>
+<body>
+    <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+    <div class="wrapper">
+        <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+        <div class="main-panel" >
+            <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+            <!--Begin Content-->
+
+            <div class="content ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pvr-wrapper">
+                            <div class="pvr-box">
+                                <h5 class="pvr-header">
+                                    Payment
+                                    <div class="pvr-box-controls">
+                                        <i class="material-icons" data-box="refresh" data-effect="win8_linear">refresh</i>
+                                        <i class="material-icons" data-box="fullscreen">fullscreen</i>
+                                        <i class="material-icons" data-box="close">close</i>
+                                    </div>
+                                </h5>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-mb-6">
+                                            <ul>
+                                                <li style="font-weight: bold" >
+                                                    Transaction Id:
+                                                    <ul>
+                                                        <li style="font-weight: normal" data-th-text="${transaction.transactionId}"></li>
+                                                    </ul>
+                                                </li>
+                                                <li style="font-weight: bold">
+                                                    Provider Transaction Id:
+                                                    <ul>
+                                                        <li style="font-weight: normal" data-th-text="${transaction.providerTransactionId}"></li>
+                                                    </ul>
+                                                </li>
+                                                <li style="font-weight: bold">
+                                                    Result Code:
+                                                    <ul>
+                                                        <li style="font-weight: normal" data-th-text="${transaction.resultCode}"></li>
+                                                    </ul>
+                                                </li>
+                                                
+                                                <li style="font-weight: bold">
+                                                    Result Message:
+                                                    <ul>
+                                                        <li style="font-weight: normal" data-th-text="${transaction.resultMessage}"></li>
+                                                    </ul>
+                                                </li>
+                                                <li style="font-weight: bold">
+                                                    Anum:
+                                                    <ul>
+                                                        <li style="font-weight: normal" data-th-text="${transaction.anum}"></li>
+                                                    </ul>
+                                                </li>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Content-->
+            <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+        </div>
+    </div>
+    <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+</body>
+</html>

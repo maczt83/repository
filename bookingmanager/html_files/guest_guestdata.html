@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Guest</title>
+    <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+    <link rel="stylesheet" type="text/css" href= "../css/easy-autocomplete.min.css" />
+    <link rel="stylesheet" type="text/css" href= "../css/easy-autocomplete.themes.min.css" />
+    <script src="../js/jquery.easy-autocomplete.min.js" type="text/javascript" ></script>
+    <script src="../js/iranyitoszamok.js" type="text/javascript" ></script>
+    <script src="../js/guest-data-validation.js" type="text/javascript"></script>
+    <style>
+
+        #guestId {
+            background-color: lightgray;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+    <div class="wrapper">
+        <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+        <div class="main-panel" >
+            <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+            <!--Begin Content-->
+
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pvr-wrapper">
+                            <div class="pvr-box">
+                                <h5 class="pvr-header">
+                                    Add / Modify guest
+                                    <div class="pvr-box-controls">
+                                        <i class="material-icons" data-box="refresh" data-effect="win8_linear">refresh</i>
+                                        <i class="material-icons" data-box="fullscreen">fullscreen</i>
+                                    </div>
+                                </h5>
+                                <form class="container" method="POST" data-th-action="@{${url}}" data-th-object="${guestData}" novalidate="">
+                                    <fieldset>
+                                        <div class=form-group>
+                                            <div class="form-row">
+                                                <div class="col-md-2 mb-3" data-th-if="${guestData.title != null}">
+                                                    <label for="title">Title</label>
+                                                    <br/>
+                                                    <select id="guest-title" class="custom-select" data-th-field="*{title}">
+                                                        <option data-th-each="enum : ${enumValues}"
+                                                                data-th-value="${enum}"
+                                                                data-th-text="${enum}"></option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-2 mb-3" data-th-unless="${guestData.title != null}">
+                                                    <label for="title">Title</label>
+                                                    <br/>
+                                                    <select id="guest-title" class="custom-select" data-th-field="*{title}">
+                                                        <option data-th-each="enum : ${enumValues}"
+                                                                data-th-value="${enum}"
+                                                                data-th-text="${enum}"></option>
+                                                    </select>
+                                                </div>
+                                                <div id ="guest-last-name-div" class="col-md-4 mb-3" data-th-if="${guestData.lastName != null}">
+                                                    <label for="validationServer01">Last name</label>
+                                                    <div>
+                                                        <input type="text" class="form-control" id="guest-last-name" placeholder="Last name" value="" required=""  data-th-field="*{lastName}" data-th-errorclass="is-invalid"/>
+                                                        <div class="invalid-feedback">
+                                                            Please provide a valid name.
+                                                        </div>
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id ="guest-last-name-div" class="col-md-4 mb-3" data-th-unless="${guestData.lastName != null}">
+                                                    <label for="validationServer01">Last name</label>
+                                                    <input type="text" class="form-control" id="guest-last-name" placeholder="Last name" value="" required=""  data-th-field="*{lastName}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid name.
+                                                    </div>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                                <div id ="guest-first-name-div" class="col-md-4 mb-3" data-th-if="${guestData.firstName != null}">
+                                                    <label  for="validationServer02">First name</label>
+                                                    <input type="text" class="form-control" id="guest-first-name" placeholder="First name" value="" required="" data-th-field="*{firstName}" data-th-errorclass="is-invalid"/>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid name.
+                                                    </div>
+                                                </div>
+                                                <div id ="guest-first-name-div" class="col-md-4 mb-3" data-th-unless="${guestData.firstName != null}">
+                                                    <label for="validationServer02">First name</label>
+                                                    <input type="text" class="form-control" id="guest-first-name" placeholder="First name" value="" required="" data-th-field="*{firstName}" data-th-errorclass="is-invalid"/>
+                                                    <!--<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Incorrect date</p>-->
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid name.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-9 mb-3" data-th-if="${guestData.companyName != null}" id="guest-company-name-div">
+                                                    <label for="validationServer02">Company Name</label>
+                                                    <input type="text" class="form-control" id="guest-company-name" placeholder="Company name" value="" required="" data-th-field="*{companyName}" data-th-errorclass="is-invalid"/>
+                                                    <!--<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Incorrect date</p>-->
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid name.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 mb-3" data-th-unless="${guestData.companyName != null}" id="guest-company-name-div">
+                                                    <label for="validationServer02">Company Name</label>
+                                                    <input type="text" class="form-control" id="guest-company-name" placeholder="Company name" value="" required="" data-th-field="*{companyName}" data-th-errorclass="is-invalid"/>
+                                                    <!--<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Incorrect date</p>-->
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid name.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3" data-th-if="${guestData.phoneNumber != null}">
+                                                    <label for="validationServer03">Phone number</label>
+                                                    <input type="text" class="form-control" id="guest-phonenumber" placeholder="Phone number" value="" required=""  data-th-field="*{phoneNumber}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid phone number.
+                                                    </div>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3" data-th-unless="${guestData.phoneNumber != null}">
+                                                    <label for="validationServer03">Phone number</label>
+                                                    <input type="text" class="form-control" id="guest-phonenumber" placeholder="Phone number" value="" required=""  data-th-field="*{phoneNumber}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid phone number.
+                                                    </div>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 mb-3" data-th-if="${guestData.emailAddress != null}">
+                                                    <label for="validationServer04">E-mail address</label>
+                                                    <input type="email" class="form-control" id="guest-email" placeholder="E-mail address" value="" required=""  data-th-field="*{emailAddress}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid email address.
+                                                    </div>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 mb-3" data-th-unless="${guestData.emailAddress != null}">
+                                                    <label for="validationServer04">E-mail address</label>
+                                                    <input type="email" class="form-control" id="guest-email" placeholder="E-mail address" value="" required="" data-th-field="*{emailAddress}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid email address.
+                                                    </div>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-3 mb-3" data-th-if="${guestData.country != null}">
+                                                    <label for="validationServer07">Country</label>
+                                                    <input type="text" class="form-control" id="guest-country" placeholder="Country" required=""  data-th-field="*{country}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid country.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 mb-3" data-th-unless="${guestData.country != null}">
+                                                    <label for="validationServer07">Country</label>
+                                                    <input type="text" class="form-control" id="guest-country" placeholder="Country" required="" data-th-field="*{country}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid country.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 mb-3" data-th-if="${guestData.zip != null}">
+                                                    <label for="validationServer05">Zip</label>
+                                                    <input type="text" class="form-control" id="guest-zip" placeholder="Zip" required=""  data-th-field="*{zip}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid zip.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 mb-3" data-th-unless="${guestData.zip != null}">
+                                                    <label for="validationServer05">Zip</label>
+                                                    <input type="text" class="form-control" id="guest-zip" placeholder="Zip" required="" data-th-field="*{zip}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid zip.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 mb-3" data-th-if="${guestData.city != null}">
+                                                    <label for="validationServer06">City</label>
+                                                    <input type="text" class="form-control" id="guest-city" placeholder="City" required=""  data-th-field="*{city}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid city.
+                                                    </div>
+                                                </div>
+                                                <div id="cityinput" class="col-md-5 mb-3" data-th-unless="${guestData.city != null}">
+                                                    <label for="validationServer06">City</label>
+                                                    <input type="text" class="form-control" id="guest-city" placeholder="City" required="" data-th-field="*{city}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid city.
+                                                    </div>
+                                                </div>
+                                                <div id="cityselect" class="col-md-5 mb-3" data-th-unless="${guestData.city != null}">
+                                                    <label for="validationServer06">Choose the city from the list</label>
+                                                    <select class="custom-select" id="cityselectopt" required="">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col mb-3" data-th-if="${guestData.address1 != null}">
+                                                    <label for="taxId">Address</label>
+                                                    <input type="text" class="form-control" id="guest-address" placeholder="Address" value=""  data-th-field="*{address1}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid address.
+                                                    </div>
+                                                </div>
+                                                <div class="col mb-3" data-th-unless="${guestData.address1 != null}">
+                                                    <label for="taxId">Address</label>
+                                                    <input type="text" class="form-control" id="guest-address" placeholder="Address" value="" data-th-field="*{address1}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid address.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-3 mb-3" data-th-if="${guestData.taxNo != null}" id="tax-div">
+                                                    <label for="taxId">Tax nr.</label>
+                                                    <input type="text" class="form-control" id="guest-tax-id" placeholder="Tax nr." value=""  data-th-field="*{taxNo}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid tax number.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 mb-3" data-th-unless="${guestData.taxNo != null}" id="tax-div">
+                                                    <label for="taxId">Tax nr.</label>
+                                                    <input type="text" class="form-control" id="guest-tax-id" placeholder="Tax nr." value="" data-th-field="*{taxNo}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid tax number.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 mb-3" data-th-if="${guestData.vatID != null}" id="vat-div">
+                                                    <label for="taxId">Vat nr.</label>
+                                                    <input type="text" class="form-control" id="guest-vat-id" placeholder="Vat nr." value=""  data-th-field="*{vatID}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid vat number.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 mb-3" data-th-unless="${guestData.vatID != null}" id="vat-div">
+                                                    <label for="taxId">Vat nr.</label>
+                                                    <input type="text" class="form-control" id="guest-vat-id" placeholder="Vat nr." value="" data-th-field="*{vatID}" data-th-errorclass="is-invalid"/>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid vat number.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-purple" type="submit" disabled id="submit">Submit</button>	
+                                        <a href="/guests" class="btn btn-purple float-right">Go back</a>
+
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    <!--End Content-->
+                    <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+                </div>
+            </div>
+            <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+
+            </body>
+            </html>

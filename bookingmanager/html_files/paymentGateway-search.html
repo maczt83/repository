@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>        
+        <!--script src="/js/room-all.js" type="text/javascript"></script-->
+        <title>Show All Payment</title>
+    <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+
+</head>
+<body>
+    <!--MENU FRAGMENTS-->
+    <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+    <div class="wrapper">
+        <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+        <div class="main-panel" >
+            <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pvr-wrapper">
+                            <div class="pvr-box">
+                                <h5 class="pvr-header"> Search paymentGateway </h5>
+
+                                <!-- SZOBA KERESÉSE PARAMÉTER ALAPJÁN -->
+                                <form action="search">
+                                    <div class="row">                                           
+                                        <div class="col-1 col-md-1" id="capacity">
+                                            <label for="room-search-by-bookingId">BookingId</label>
+                                            <input type="number" min="1" class="form-control" name="bookingId" id="room-search-by-bookingId" placeholder=""/>
+                                        </div>
+                                        <div class="col-4 col-md-4">
+                                            <label for="room-search-by-linkName">LinkName</label>
+                                            <input type="text" class="form-control" name="linkName" id="room-search-by-linkName" placeholder=""/>
+                                        </div>
+                                        <div class="col-6 col-md-2">
+                                            <label for="room-search-by-status">Status</label>
+                                            <input type="text" class="form-control" name="status" id="room-search-by-status" placeholder=""/>
+                                        </div>
+                                        <div class="col-6 col-md-2">
+                                            <label for="room-search-by-creationDate">Creation Date</label>
+                                            <input type="text" class="form-control date_picker" name="creationDate" id="room-search-by-creationDate" placeholder=""/>
+                                        </div>
+                                        <div class="col-6 col-md-2">
+                                            <label for="room-search-by-lastUpdate">Last Update</label>
+                                            <input type="text" class="form-control date_picker" name="lastUpdate" id="room-search-by-lastUpdate" placeholder=""/>
+                                        </div>
+                                        <div class="col-6 col-md-1" style="margin-top: 32px">
+                                            <input type="submit" class="btn btn-purple waves-effect button-room-search" value="Search"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="pvr-box" >
+                                <h5 class="pvr-header"> List of Payments </h5>		
+                                <table class="table">
+                                    <thead>
+                                        <th>BookingId</th>
+                                        <th>LinkName</th>
+                                        <th>PaymentLink</th>
+                                        <th>Link Status</th>
+                                        <th>CreationDate</th>
+                                        <th>Last Update</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-th-each ="payment: ${paymentList}">
+                                            <td data-th-text="${payment.bookingId.id}"></td>
+                                            <td data-th-text="${payment.paymentLinkName}"></td>
+                                            <td data-th-text="${payment.paymentLink}" style="font-size: 70% !important"></td>
+                                            <td data-th-text="${payment.paymentLinkStatus}"></td>
+                                            <td data-th-text="${payment.creationDate}"></td>
+                                            <td data-th-text="${payment.lastUpdate}"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+        </div>
+      </div>
+    <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+</body>
+</html>

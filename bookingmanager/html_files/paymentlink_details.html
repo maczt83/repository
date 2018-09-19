@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Payment Link Status Checking</title>
+    <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+    <link rel="stylesheet" type="text/css" href= "../css/bootstrap.min.css" />
+    <script src="../js/paymentlinkdetails.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+    <div class="wrapper">
+        <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+        <div class="main-panel" >
+            <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+            <!--Begin Content-->
+
+            <div class="content ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pvr-wrapper">
+                            <div class="pvr-box">
+                                <h5 class="pvr-header">
+                                    Payment
+                                    <div class="pvr-box-controls">
+                                        <i class="material-icons" data-box="refresh" data-effect="win8_linear">refresh</i>
+                                        <i class="material-icons" data-box="fullscreen">fullscreen</i>
+                                        <i class="material-icons" data-box="close">close</i>
+                                    </div>
+                                </h5>
+                                <div class="form-row">
+                                    <label>Payment Link Name</label>
+                                    <input type="text" class="form-control" id="paymentLinkName" value="" required />
+                                    <div class="invalid-feedback">Invalid field</div>
+                                </div>
+                                <br>
+                                <button class="btn btn-primary" type="submit" id="submit">Send request</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Content-->
+            <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+        </div>
+    </div>
+    <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+</body>
+</html>

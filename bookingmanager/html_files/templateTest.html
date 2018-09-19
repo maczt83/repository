@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/fragments.css"/>
+    
+  </head>
+  <body>
+      
+    <div id="holder">
+      <header>
+        <div data-th-replace="fragments/fragments :: menu"></div>
+      </header>
+
+      <div id="body" class="container">
+        <p>
+          Ide jöhet minden tartalom!
+        </p>
+      </div>
+
+      <div class="footer">
+        <div data-th-replace="fragments/fragments :: footer"></div>
+      </div>
+    </div>
+    
+  </body>
+</html>

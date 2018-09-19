@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Create new room rate / Modify room rate</title>
+    <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+</head>
+<body>
+
+    <!--MENU FRAGMENTS-->
+    <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+    <div class="wrapper">
+        <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+        <div class="main-panel" >
+            <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pvr-wrapper">
+                            <div class="pvr-box">
+                                <h5 class="pvr-header" data-th-text="${headingText}"></h5>
+
+                                <!-- ROOMRATE HOZZÁADÁSA -->
+                                <div class="container mt-3">
+                                <form class="container add-room-rate" method="POST" data-th-action="@{${url}}" data-th-object="${roomrateData}">
+                                    <!-- ROOM RATE -->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="roomrate-add-rate">Roomrate</label>
+                                        <div class="col-sm-3">
+                                            <input type="number"  class="form-control" id="roomrate-add-rate" 
+                                                   data-th-field="*{rate}" 
+                                                   placeholder="Enter the name of the room rate" />
+                                        </div>
+                                        <label class="col-sm-3 col-form-label" style="color: red" data-th-text="${errorMessageRate}"></label>
+                                    </div>
+
+                                    <!-- START DATE -->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="roomrate-add-startdate">Start Date</label>
+                                        <div class="col-sm-3">
+                                            <div class="input-group date">
+                                                <input type="text" id="roomrate-add-startdate" class="form-control date_picker" data-th-field="*{startDate}" />
+                                                <span class="input-group-addon date_picker">
+                                                    <i class="material-icons">date_range</i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-3 col-form-label start-date-error" style="color: red" data-th-text="${errorMessageStartDate}"></label>
+                                    </div>
+
+                                    <!-- END RATE -->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="roomrate-add-enddate">End Date</label>
+                                        <div class="col-sm-3">
+                                            <div class="input-group date">
+                                                <input type="text" id="roomrate-add-enddate" class="form-control date_picker" data-th-field="*{endDate}"  />
+                                                <span class="input-group-addon date_picker">
+                                                    <i class="material-icons">date_range</i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-3 col-form-label end-date-error" style="color: red" data-th-text="${errorMessageEndDate}"></label>
+                                    </div>
+
+                                    <!-- BUTTON  -->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"></label>
+                                        <div class="col-sm-10">
+                                            <button class="btn btn-purple waves-effect" type="submit">Save the changes</button>
+                                            <a href="/roomtype/search" class="btn btn-purple float-right">Go back</a>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+    </div>
+    <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+
+</body>
+</html>

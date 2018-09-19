@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Show Rates Of The Roomtype</title>
+        <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+    </head>
+    <body>
+	
+	<!--MENU FRAGMENTS-->
+        <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+        <div class="wrapper">
+            <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+            <div class="main-panel" >
+                <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="pvr-wrapper">
+                                <div class="pvr-box">
+									<div class="row">
+										<div class="col-sm-10">
+											<h5 class="pvr-header" style="line-height: 30px">
+												<span data-th-text="${roomtype.name} +' : List of rates'">List of rates</span>
+											</h5>
+										</div>
+										<div class="col-sm-2">
+											<a data-sec-authorize="hasRole('ROLE_MANAGER')" class="btn btn-purple waves-effect float-right" data-th-href="'/roomrate/create/' + ${roomtype.id}" role="button">Add new roomrate</a>
+										</div>
+									</div>
+                                    
+							        <!-- EGY SZOBA TÍPUSNAK A SZEZON LISTÁJA -->
+									
+		                            <div class="table-responsive">
+										<table class="table table-separate table-extended">
+											<thead>
+											<tr>
+												<th class="text-center" data-sec-authorize="hasRole('ROLE_MANAGER')"></th>
+												<th>Rate</th>
+												<th>Start Date</th>
+												<th>End Date</th>
+												<th data-sec-authorize="hasRole('ROLE_MANAGER')">Action</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr data-th-each="roomrate:${roomtype.roomRateList}">
+												<td class="text-center" data-sec-authorize="hasRole('ROLE_MANAGER')">
+													<div class="form-check">
+														<label class="form-check-label">
+															<input class="form-check-input" type="checkbox">
+															<span class="form-check-sign"></span>
+
+														</label>
+													</div>
+												</td>
+												
+												<!-- RATE -->
+												<td>
+													<div class="roomtype_rate_rate">
+														<span data-th-text="${roomrate.rate}">
+															
+														</span>
+													</div>
+												</td>
+												<!-- START DATE -->
+												<td>
+													<div class="roomtype_rate_startdate">
+														<span data-th-text="${roomrate.startDate}">
+															
+														</span>
+													</div>
+												</td>
+												<!-- END DATE -->
+												<td>
+													<div class="roomtype_rate_enddate">
+														<span data-th-text="${roomrate.endDate}">
+															
+														</span>
+													</div>
+												</td>
+												
+												<!-- BUTTONS -->
+												<td data-sec-authorize="hasRole('ROLE_MANAGER')">
+													<a data-th-href="'/roomrate/modify/'+${roomrate.id}+'/'+${roomtype.id}" class="btn btn-purple waves-effect">Modify</a> 
+													<a data-th-href="'/roomrate/delete/'+${roomrate.id}+'/'+${roomtype.id}" onclick="return confirm ('Are you sure you want to delete this roomrate?');"  class="btn btn-purple waves-effect">Delete</a>                                 
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+            </div>
+        <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+
+    </body>
+</html>

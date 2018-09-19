@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head >
+        <title>Email Templates</title>    
+    <object data-th-include="fragments/fragmentsNew :: head" data-th-remove="tag" />
+    <script src="assets/plugins/ckeditor/ckeditor.js"></script>
+    <script src="/js/emailtemp-editor.js"></script>
+</head>
+<body>
+    <div data-th-replace="fragments/fragmentsNew :: loading"></div>
+    <div class="wrapper">
+        <div data-th-replace="fragments/fragmentsNew :: sidemenu"></div>
+        <div class="main-panel" >
+            <div data-th-replace="fragments/fragmentsNew :: navbar"></div>
+            <!--Begin Content-->
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pvr-wrapper">
+                            <div class="pvr-box">
+                                <h5 class="pvr-header">
+                                    Templates
+                                </h5>
+                                <div class="form-group">           
+                                    <select class="form-control" id="emailTempSelect">
+                                        <option class="default is-invalid" value="0"> - Select a template - </option>
+                                        <option data-th-each="temp : ${emailTempList}"
+                                                data-th-value="${temp.id}"
+                                                data-th-text="${temp.subject}"></option>
+                                    </select>										
+                                </div>							
+                            </div>
+                            <div class="pvr-box">
+                                <h5 class="pvr-header">
+                                    Edit choosen template
+                                    <div class="pvr-box-controls">
+                                        <i class="material-icons" data-box="refresh" data-effect="win8_linear">refresh</i>
+                                        <i class="material-icons" data-box="fullscreen">fullscreen</i>
+                                    </div>
+                                </h5>
+                                <form data-th-action="@{/emailTemplate}" method="POST">
+                                    <input type="hidden" class="form-control" id="emailTemplateId" name="emailTemplateId">
+                                    <textarea name="html" id="editor1" rows="10" cols="80" style="height: 400px !important; visibility: hidden; display: none;"></textarea>
+                                    <br>
+                                    <button id="saveButton" class="btn btn-purple waves-effect">Save</button>
+                                </form>
+
+                            </div>
+                        </div>					
+                    </div>						
+                </div>
+            </div>
+            <!--End Content-->
+            <div data-th-replace="fragments/fragmentsNew :: footer"></div>
+        </div>
+    </div>
+    <a data-th-replace="fragments/fragmentsNew :: scroll"></a>
+</body>
+</html>
