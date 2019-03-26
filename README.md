@@ -4,5 +4,7 @@ bookingmanager folder - contains the files of the final project of Progmatic Aca
 
 codility folder - contains some exercises from codility
 
+hackerrank folder - contains some exercises from hackerrank
+
 practice folder - contains practicing algorithms
 
